@@ -3,15 +3,13 @@ var express = require('express');
 var router = express.Router();
 var mongodb = require('../service/mongodb.js');
 
-var count = 0;
-
 var User = mongodb.User;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var query = User.find()
   query.exec(function (err, docs) {
-    //res.set('Content-Type', 'text/plain');
+    res.set('Content-Type', 'text/plain');
     res.send(docs);
     //res.status(404).send('Sorry, we cannot find that!');
   });
